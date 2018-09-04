@@ -6,10 +6,13 @@ package ru.kopylov.stockexshange.model;
 public class Customer {
     private String name;
     private long cachBalance;
-    private long[] sharesBalance;
-    
-    public Customer(){
-        sharesBalance = new long[Shares.getInstance().getSize()];
+
+    public Customer() {
+    }
+
+    public Customer(String name, long cachBalance) {
+        this.name = name;
+        this.cachBalance = cachBalance;
     }
 
     public String getName() {
@@ -28,11 +31,5 @@ public class Customer {
         this.cachBalance = cachBalance;
     }
 
-    public long[] getSharesBalance() {
-        return sharesBalance;
-    }
 
-    public void setSharesBalance(long[] sharesBalance) {
-        this.sharesBalance = sharesBalance;
-    }
 }
