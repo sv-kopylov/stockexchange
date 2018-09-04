@@ -6,7 +6,8 @@ package ru.kopylov.stockexshange.model;
 public class RegisterItem {
     private Customer customer;
     private Share share;
-    private long itemBalance;
+//    it also could be Long obj
+    private long itemBalance=-1;
 
     public RegisterItem(Customer customer, Share share) {
         this.customer = customer;

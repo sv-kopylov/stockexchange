@@ -1,4 +1,4 @@
-package ru.kopylov.stockexshange.model.ru.kopylov.stockexchange.app;
+package ru.kopylov.stockexshange.app;
 
 import ru.kopylov.stockexshange.model.Customer;
 import ru.kopylov.stockexshange.model.RegisterItem;
