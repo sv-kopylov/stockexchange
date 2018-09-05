@@ -44,15 +44,15 @@ public class RegisterImplTest {
 
         register = new RegisterImpl();
 
-        register.addItem(ri11);
-        register.addItem(ri12);
-        register.addItem(ri21);
-        register.addItem(ri22);
+        register.add(ri11);
+        register.add(ri12);
+        register.add(ri21);
+        register.add(ri22);
 
     }
     @Test
     public void findItem() throws Exception {
-        RegisterItem actual = register.findItem(c1, s2);
+        RegisterItem actual = register.find(c1, s2);
         RegisterItem expected = ri12;
         assertEquals(actual, expected);
         assertTrue(actual.getItemBalance()==expected.getItemBalance());

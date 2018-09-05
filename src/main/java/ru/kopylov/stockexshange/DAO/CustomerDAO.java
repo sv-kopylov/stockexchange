@@ -25,5 +25,12 @@ public class CustomerDAO {
         return null;
     }
 
+    public long getTotalBalance(){
+       return list.stream().mapToLong(Customer::getCachBalance).sum();
+    }
+    public long count(){
+        return list.size();
+    }
+
 
 }

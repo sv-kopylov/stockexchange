@@ -5,7 +5,6 @@ import ru.kopylov.stockexshange.DAO.CustomerDAO;
 import ru.kopylov.stockexshange.DAO.RegisterImpl;
 import ru.kopylov.stockexshange.DAO.ShareDAO;
 import ru.kopylov.stockexshange.Exceptions.CriticalException;
-import ru.kopylov.stockexshange.Exceptions.ExceptionHandler;
 import ru.kopylov.stockexshange.Exceptions.NoSuchDefinitionException;
 import ru.kopylov.stockexshange.Exceptions.NotCriticalException;
 import ru.kopylov.stockexshange.ioc.Context;
@@ -16,12 +15,11 @@ import ru.kopylov.stockexshange.model.Share;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 /**
  * Created by se on 04.09.2018.
  */
-public class CustomesrParser implements Parcer {
+public class CustomesrParser implements Parser {
     CustomerDAO customerDAO;
     RegisterImpl register;
     ShareDAO shareDAO;
@@ -39,7 +37,7 @@ public class CustomesrParser implements Parcer {
 
     }
     @Override
-    public void parce(String path) {
+    public void parse(String path) {
         try {
             Files.lines(Paths.get(path)).forEach(s->parceOneCustomer(s));
         } catch (IOException e) {
@@ -51,7 +49,7 @@ public class CustomesrParser implements Parcer {
     private void parceOneCustomer(String line) {
         String[] arr = line.split(COLUMN_DELIMITER);
         if(arr.length<2){
-            logger.error("Parsing error, incorrect line in file: "+line +
+            logger.error("Parsing error, incorrect line in file Customers: "+line +
                     "customer will not be added to table");
             return;
         }
@@ -62,10 +60,10 @@ public class CustomesrParser implements Parcer {
             RegisterItem ri;
             for (int i = 2; i < arr.length; i++) {
                 ri=makeRegisterItem(customer, i, arr[i]);
-                register.addItem(ri);
+                register.add(ri);
             }
         } catch (NotCriticalException e){
-
+            logger.error(e.getMessage());
         }
 
 
