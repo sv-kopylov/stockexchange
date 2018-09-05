@@ -56,7 +56,7 @@ public class CustomesrParser implements Parcer {
             return;
         }
         try{
-            Customer customer = makeCustomer(arr[1],arr[2]);
+            Customer customer = makeCustomer(arr[0],arr[1]);
             customerDAO.add(customer);
 
             RegisterItem ri;
@@ -80,7 +80,6 @@ public class CustomesrParser implements Parcer {
         }
         return new Customer(name, cashBalance);
     }
-
     private RegisterItem makeRegisterItem(Customer customer, int colIndex, String num) throws NotCriticalException {
         colIndex-=1;
         Share share = shareDAO.get(colIndex);

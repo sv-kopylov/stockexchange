@@ -21,7 +21,7 @@ public class ShareDAO {
     }
     public Share get(int index){
         for(Share s: list){
-            if(s.getName().equals(index)){
+            if(s.getIndex()==index){
                 return s;
             }
         }

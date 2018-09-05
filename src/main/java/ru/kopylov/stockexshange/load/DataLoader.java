@@ -4,20 +4,18 @@ import ru.kopylov.stockexshange.DAO.CustomerDAO;
 import ru.kopylov.stockexshange.DAO.RegisterImpl;
 import ru.kopylov.stockexshange.DAO.ShareDAO;
 import ru.kopylov.stockexshange.ioc.Context;
-import ru.kopylov.stockexshange.model.Customer;
-import ru.kopylov.stockexshange.model.RegisterItem;
 
 /**
  *
  */
 public class DataLoader {
 
-    private String clientFileName;
+    private String clientsFileName;
     private String ordersFileName;
     private Context ctx = Context.getInstance();
 
-    public DataLoader(String clientFileName, String ordersFileName) {
-        this.clientFileName = clientFileName;
+    public DataLoader(String clientsFileName, String ordersFileName) {
+        this.clientsFileName = clientsFileName;
         this.ordersFileName = ordersFileName;
     }
 
