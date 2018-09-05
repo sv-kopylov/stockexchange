@@ -3,7 +3,7 @@ package ru.kopylov.stockexshange.model;
 /**
  *
  */
-public class Share implements Comparable<Share> {
+public class Share  {
     private String name;
     private int index;
 
@@ -35,8 +35,4 @@ public class Share implements Comparable<Share> {
         this.index = index;
     }
 
-    @Override
-    public int compareTo(Share o) {
-        return this.name.compareTo(o.name);
-    }
 }

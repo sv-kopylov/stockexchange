@@ -14,6 +14,12 @@ public class RegisterItem {
         this.share = share;
     }
 
+    public RegisterItem(Customer customer, Share share, long itemBalance) {
+        this.customer = customer;
+        this.share = share;
+        this.itemBalance = itemBalance;
+    }
+
     public RegisterItem() {
     }
 

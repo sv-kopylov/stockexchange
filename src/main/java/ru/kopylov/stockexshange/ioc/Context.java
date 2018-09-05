@@ -1,5 +1,7 @@
 package ru.kopylov.stockexshange.ioc;
 
+import ru.kopylov.stockexshange.Exceptions.NoSuchDefinitionException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +14,12 @@ public class Context {
         map.put(obj.getClass(), obj);
     }
 
-    public Object lookup(Class key){
-        return map.get(key);
+    public Object lookup(Class key) throws NoSuchDefinitionException {
+        Object result =  map.get(key);
+        if(result==null){
+            throw new NoSuchDefinitionException("No definition of "+ key.getCanonicalName() +"found in context");
+        }
+        return result;
     }
 
     private static Context instance = new Context();
