@@ -1,4 +1,4 @@
-package ru.kopylov.stockexshange.app;
+package ru.kopylov.stockexshange.DAO;
 
 import ru.kopylov.stockexshange.model.Customer;
 import ru.kopylov.stockexshange.model.RegisterItem;

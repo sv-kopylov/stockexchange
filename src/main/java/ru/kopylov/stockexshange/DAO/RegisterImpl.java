@@ -1,4 +1,4 @@
-package ru.kopylov.stockexshange.app;
+package ru.kopylov.stockexshange.DAO;
 
 import ru.kopylov.stockexshange.model.Customer;
 import ru.kopylov.stockexshange.model.RegisterItem;
@@ -11,8 +11,9 @@ import java.util.*;
  *
  */
 // TODO make more resource-friendly impl
-public class RegisterImpl implements Register{
+public class  RegisterImpl implements Register {
 
+//    keys could be smaller
    private final Map<RegisterItem, RegisterItem> map = new HashMap<>();
 
     @Override

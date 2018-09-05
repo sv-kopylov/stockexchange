@@ -2,9 +2,13 @@ package ru.kopylov.stockexshange.app;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.kopylov.stockexshange.DAO.Register;
+import ru.kopylov.stockexshange.DAO.RegisterImpl;
 import ru.kopylov.stockexshange.model.Customer;
 import ru.kopylov.stockexshange.model.RegisterItem;
 import ru.kopylov.stockexshange.model.Share;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by se on 04.09.2018.
@@ -48,8 +52,10 @@ public class RegisterImplTest {
     }
     @Test
     public void findItem() throws Exception {
-
-
+        RegisterItem actual = register.findItem(c1, s2);
+        RegisterItem expected = ri12;
+        assertEquals(actual, expected);
+        assertTrue(actual.getItemBalance()==expected.getItemBalance());
     }
 
 }
