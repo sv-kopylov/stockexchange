@@ -7,12 +7,9 @@ import ru.kopylov.stockexshange.DAO.CustomerDAO;
 import ru.kopylov.stockexshange.DAO.OrderDAO;
 import ru.kopylov.stockexshange.DAO.RegisterImpl;
 import ru.kopylov.stockexshange.DAO.ShareDAO;
-import ru.kopylov.stockexshange.Exceptions.NoSuchDefinitionException;
 import ru.kopylov.stockexshange.ioc.Context;
 
 import static org.junit.Assert.*;
-
-import java.nio.file.Paths;
 
 /**
  * Created by se on 05.09.2018.
@@ -37,7 +34,7 @@ public class ParserTest {
     }
 
     @Test
-    public void parceClients() throws Exception {
+    public void parseClients() throws Exception {
         Parser parser = new CustomesrParser();
         parser.init();
         parser.parse(clientFileName);
@@ -46,7 +43,7 @@ public class ParserTest {
     }
 
     @Test
-    public void parceOrders() throws Exception {
+    public void parseOrders() throws Exception {
         Parser parser = new CustomesrParser();
         parser.init();
         parser.parse(clientFileName);

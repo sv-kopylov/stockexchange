@@ -1,4 +1,4 @@
-package ru.kopylov.stockexshange.app;
+package ru.kopylov.stockexshange.DAO;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class RegisterImplTest {
     RegisterItem ri22;
 
     @Before
-    public void init() {
+    public void setUp() {
         c1 = new Customer("C1", 100);
         c2 = new Customer("C2", 200);
 

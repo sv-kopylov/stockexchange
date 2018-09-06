@@ -11,9 +11,9 @@ import ru.kopylov.stockexshange.ioc.Context;
  */
 public class DataLoader {
 
-    private String clientsFileName;
-    private String ordersFileName;
-    private Context ctx = Context.getInstance();
+    private final String clientsFileName;
+    private final String ordersFileName;
+    private final Context ctx = Context.getInstance();
 
     public DataLoader(String clientsFileName, String ordersFileName) {
         this.clientsFileName = clientsFileName;

@@ -5,14 +5,14 @@ package ru.kopylov.stockexshange.model;
  */
 public class Customer {
     private String name;
-    private long cachBalance;
+    private long cashBalance;
 
     public Customer() {
     }
 
-    public Customer(String name, long cachBalance) {
+    public Customer(String name, long cashBalance) {
         this.name = name;
-        this.cachBalance = cachBalance;
+        this.cashBalance = cashBalance;
     }
 
     public String getName() {
@@ -23,12 +23,12 @@ public class Customer {
         this.name = name;
     }
 
-    public long getCachBalance() {
-        return cachBalance;
+    public long getCashBalance() {
+        return cashBalance;
     }
 
-    public void setCachBalance(long cachBalance) {
-        this.cachBalance = cachBalance;
+    public void setCashBalance(long cashBalance) {
+        this.cashBalance = cashBalance;
     }
 
 

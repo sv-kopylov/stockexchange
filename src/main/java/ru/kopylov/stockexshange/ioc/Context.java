@@ -9,7 +9,7 @@ import java.util.Map;
  * Created by se on 05.09.2018.
  */
 public class Context {
-    private Map<Class, Object> map;
+    private final Map<Class, Object> map;
     public void add(Object obj){
         map.put(obj.getClass(), obj);
     }

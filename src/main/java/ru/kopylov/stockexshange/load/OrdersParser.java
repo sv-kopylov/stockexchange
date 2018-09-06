@@ -14,16 +14,15 @@ import ru.kopylov.stockexshange.model.Share;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Queue;
 
 /**
  * Created by se on 04.09.2018.
  */
 public class OrdersParser implements Parser {
-    OrderDAO orderDAO;
-    CustomerDAO customerDAO;
-    ShareDAO shareDAO;
-    private static Logger logger = Logger.getLogger(OrdersParser.class);
+    private OrderDAO orderDAO;
+    private CustomerDAO customerDAO;
+    private ShareDAO shareDAO;
+    private static final Logger logger = Logger.getLogger(OrdersParser.class);
 
 
     @Override
@@ -41,7 +40,7 @@ public class OrdersParser implements Parser {
     @Override
     public void parse(String path) {
         try {
-            Files.lines(Paths.get(path)).forEach(s->parceOneOrder(s));
+            Files.lines(Paths.get(path)).forEach(this::parseOneOrder);
         } catch (IOException e) {
             logger.error("Application fall doun because of problem with file: "+path);
             throw new CriticalException(e.getMessage());
@@ -49,7 +48,7 @@ public class OrdersParser implements Parser {
 
     }
 
-    private void parceOneOrder(String line) {
+    private void parseOneOrder(String line) {
         String[] arr = line.split(COLUMN_DELIMITER);
         if (arr.length != ORDERS_TABLE_COLUMNS) {
             logger.error("Parsing error, incorrect line in file Orders: " + line +

@@ -20,10 +20,10 @@ import java.nio.file.Paths;
  * Created by se on 04.09.2018.
  */
 public class CustomesrParser implements Parser {
-    CustomerDAO customerDAO;
-    RegisterImpl register;
-    ShareDAO shareDAO;
-    private static Logger logger = Logger.getLogger(CustomesrParser.class);
+    private CustomerDAO customerDAO;
+    private RegisterImpl register;
+    private ShareDAO shareDAO;
+    private static final Logger logger = Logger.getLogger(CustomesrParser.class);
 
     @Override
     public void init() {
@@ -39,14 +39,14 @@ public class CustomesrParser implements Parser {
     @Override
     public void parse(String path) {
         try {
-            Files.lines(Paths.get(path)).forEach(s->parceOneCustomer(s));
+            Files.lines(Paths.get(path)).forEach(this::parseOneCustomer);
         } catch (IOException e) {
             logger.error("Application fall doun because of problem with file: "+path);
             throw new CriticalException(e.getMessage());
         }
     }
 
-    private void parceOneCustomer(String line) {
+    private void parseOneCustomer(String line) {
         String[] arr = line.split(COLUMN_DELIMITER);
         if(arr.length<2){
             logger.error("Parsing error, incorrect line in file Customers: "+line +
@@ -74,7 +74,7 @@ public class CustomesrParser implements Parser {
             cashBalance=Long.parseLong(sum);
         } catch (NumberFormatException e){
             throw new NotCriticalException("Customer field contains incorrect cash sum: "+e.getMessage()+"" +
-                    "customer "+name+"will no be addet to table");
+                    "customer "+name+"will no be added to table");
         }
         return new Customer(name, cashBalance);
     }

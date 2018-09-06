@@ -1,7 +1,7 @@
 package ru.kopylov.stockexshange.model;
 
 /**
- * Implementation mamy to many relationship
+ * Implementation many to many relationship
  */
 public class RegisterItem {
     private Customer customer;
@@ -54,14 +54,14 @@ public class RegisterItem {
 
         RegisterItem that = (RegisterItem) o;
 
-        if (!customer.equals(that.customer)) return false;
-        return share.equals(that.share);
+        if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
+        return share != null ? share.equals(that.share) : that.share == null;
     }
 
     @Override
     public int hashCode() {
-        int result = customer.hashCode();
-        result = 31 * result + share.hashCode();
+        int result = customer != null ? customer.hashCode() : 0;
+        result = 31 * result + (share != null ? share.hashCode() : 0);
         return result;
     }
 }

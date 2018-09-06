@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class Settings {
     /*
-    * List of availabel shares
-    * Must be before app run according to tasc requirements
+    * List of available shares
+    * Must be before app run according to task requirements
     */
     List<Share> list = new ArrayList<>();
     {

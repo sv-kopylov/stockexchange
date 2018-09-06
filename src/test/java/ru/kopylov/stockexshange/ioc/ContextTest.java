@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * Created by se on 05.09.2018.
  */
 public class ContextTest {
-    Register reg;
+    private Register reg;
     @Before
     public void setUp(){
         reg = new RegisterImpl();
