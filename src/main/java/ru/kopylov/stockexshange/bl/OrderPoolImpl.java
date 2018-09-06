@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by se on 06.09.2018.
  */
-public class OrderPoolImpl implements OrderPool{
+public class OrderPoolImpl implements OrderPool {
     private final Map<Share, Map<Long, Map<Long, LinkedList<Order>>>> pool = new HashMap<>();
 
     @Override
@@ -17,42 +17,65 @@ public class OrderPoolImpl implements OrderPool{
         Map<Long, LinkedList<Order>> numMap;
         LinkedList<Order> sameOrdersList;
 
-        if(priceMap==null){
-            priceMap=new TreeMap<>();
+        if (priceMap == null) {
+            priceMap = new TreeMap<>();
             numMap = new TreeMap<>();
             sameOrdersList = new LinkedList<>();
 
-            add(order, sameOrdersList, numMap, priceMap);
+            sameOrdersList.addLast(order);
+            numMap.put(order.getSharesNum(), sameOrdersList);
+            priceMap.put(order.getPricePerShare(), numMap);
             pool.put(order.getShare(), priceMap);
-        } else if((numMap=priceMap.get(order.getPricePerShare()))==null){
+        } else if ((numMap = priceMap.get(order.getPricePerShare())) == null) {
             numMap = new TreeMap<>();
             sameOrdersList = new LinkedList<>();
 
-            add(order, sameOrdersList, numMap, priceMap);
-        } else if((sameOrdersList=numMap.get(order.getSharesNum()))==null){
+            sameOrdersList.addLast(order);
+            numMap.put(order.getSharesNum(), sameOrdersList);
+            priceMap.put(order.getPricePerShare(), numMap);
+        } else if ((sameOrdersList = numMap.get(order.getSharesNum())) == null) {
             sameOrdersList = new LinkedList<>();
 
-            add(order, sameOrdersList, numMap, priceMap);
+            sameOrdersList.addLast(order);
+            numMap.put(order.getSharesNum(), sameOrdersList);
         } else {
-
-            add(order, sameOrdersList, numMap, priceMap);
+            sameOrdersList.addLast(order);
         }
     }
 
-    private void add(Order order,
-                     LinkedList<Order> sameOrdersList,
-                     Map<Long, LinkedList<Order>> numMap,
-                     Map<Long, Map<Long, LinkedList<Order>>> priceMap) {
-        sameOrdersList.offer(order);
-        numMap.put(order.getSharesNum(), sameOrdersList);
-        priceMap.put(order.getPricePerShare(), numMap);
-    }
-
-
 
     @Override
-    public Order mathc(Order order) {
-        return null;
+    public Order pollMatching(Order order) {
+        Order matchingOrder;
+        Map<Long, Map<Long, LinkedList<Order>>> priceMap = pool.get(order.getShare());
+        Map<Long, LinkedList<Order>> numMap;
+        LinkedList<Order> sameOrdersList;
+        if (priceMap == null) {
+            return null;
+        } else if ((numMap = priceMap.get(order.getPricePerShare())) == null) {
+            return null;
+        } else if ((sameOrdersList = numMap.get(order.getSharesNum())) == null) {
+            return null;
+        } else if ((matchingOrder = sameOrdersList.pollFirst()) == null) {
+            return null;
+        }
+        cleanEmpty(order, sameOrdersList, numMap, priceMap);
+        return matchingOrder;
+    }
+
+    private void cleanEmpty(Order order,
+                            LinkedList<Order> sameOrdersList,
+                            Map<Long, LinkedList<Order>> numMap,
+                            Map<Long, Map<Long, LinkedList<Order>>> priceMap) {
+        if (sameOrdersList.size() == 0) {
+            numMap.remove(order.getSharesNum());
+        }
+        if (numMap.size() == 0) {
+            priceMap.remove(order.getPricePerShare());
+        }
+        if (priceMap.size() == 0) {
+            pool.remove(order.getShare());
+        }
     }
 
 
