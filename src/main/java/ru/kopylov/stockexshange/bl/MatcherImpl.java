@@ -10,8 +10,8 @@ import ru.kopylov.stockexshange.model.Order;
  * Created by se on 07.09.2018.
  */
 public class MatcherImpl implements Matcher {
-    OrderPool saleOrderPool = new OrderPoolImpl();
-    OrderPool buyOrderPool = new OrderPoolImpl();
+    private OrderPool saleOrderPool = new OrderPoolImpl();
+    private OrderPool buyOrderPool = new OrderPoolImpl();
     
     OrderDAO orderDAO;
     OrderExecutor orderExecutor;
@@ -25,6 +25,7 @@ public class MatcherImpl implements Matcher {
             throw new CriticalException("Context not initialized "+e.getMessage());
         }
     }
+    int cnt;
     
     @Override
     public void processOrders() {
@@ -50,5 +51,13 @@ public class MatcherImpl implements Matcher {
                     break;
             }
         }
+    }
+
+    public long getSalePoolSize(){
+        return saleOrderPool.size();
+    }
+
+    public long getBuyPollSize(){
+        return buyOrderPool.size();
     }
 }
