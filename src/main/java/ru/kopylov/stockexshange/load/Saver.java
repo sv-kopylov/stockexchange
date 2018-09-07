@@ -66,7 +66,7 @@ public class Saver {
                     sb.append(Parser.COLUMN_DELIMITER);
                 });
 
-        return sb.substring(0, sb.length()-2);
+        return sb.substring(0, sb.length()-1);
 
     }
 
