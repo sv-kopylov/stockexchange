@@ -23,6 +23,8 @@ public class RegisterImplTest {
     RegisterItem ri12;
     RegisterItem ri21;
     RegisterItem ri22;
+    long s1balance;
+    long s2balance;
 
     @Before
     public void setUp() {
@@ -36,11 +38,16 @@ public class RegisterImplTest {
         ri12 = new RegisterItem(c1, s2);
         ri21 = new RegisterItem(c2, s1);
         ri22 = new RegisterItem(c2, s2);
+        s1balance = 40;
+        s2balance = 60;
 
         ri11.setItemBalance(10);
         ri12.setItemBalance(20);
         ri21.setItemBalance(30);
         ri22.setItemBalance(40);
+
+
+
 
         register = new RegisterImpl();
 
@@ -56,6 +63,13 @@ public class RegisterImplTest {
         RegisterItem expected = ri12;
         assertEquals(actual, expected);
         assertTrue(actual.getItemBalance()==expected.getItemBalance());
+    }
+
+    @Test
+    public void getShareTotalBalance() throws Exception{
+        assertEquals(s1balance, register.getShareTotalBalance(s1));
+        assertEquals(s2balance, register.getShareTotalBalance(s2));
+
     }
 
 }

@@ -4,6 +4,8 @@ import ru.kopylov.stockexshange.DAO.CustomerDAO;
 import ru.kopylov.stockexshange.DAO.OrderDAO;
 import ru.kopylov.stockexshange.DAO.RegisterImpl;
 import ru.kopylov.stockexshange.DAO.ShareDAO;
+import ru.kopylov.stockexshange.bl.OrderExecutor;
+import ru.kopylov.stockexshange.bl.OrderExecutorImpl;
 import ru.kopylov.stockexshange.ioc.Context;
 
 /**
@@ -30,6 +32,9 @@ public class ApplicationDataLoader {
         ctx.add(new RegisterImpl());
         ctx.add(new CustomerDAO());
         ctx.add(new OrderDAO());
+        OrderExecutor oe = new OrderExecutorImpl();
+        oe.init();
+        ctx.add(oe);
     }
 
     private void fillTables(){

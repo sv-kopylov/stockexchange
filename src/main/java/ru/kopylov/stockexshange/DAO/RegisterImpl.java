@@ -31,6 +31,16 @@ public class  RegisterImpl implements Register {
         return map.get(key);
     }
 
+    @Override
+    public long getShareTotalBalance(Share share) {
+      return   map.values()
+              .stream()
+              .filter(ri->ri.getShare().equals(share))
+              .mapToLong(RegisterItem::getItemBalance)
+              .sum();
+
+    }
+
     public long count(){
         return map.size();
     }

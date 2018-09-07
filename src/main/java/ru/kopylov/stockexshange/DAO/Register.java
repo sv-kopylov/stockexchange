@@ -10,5 +10,5 @@ import ru.kopylov.stockexshange.model.Share;
 public interface Register {
     void add(RegisterItem registerItem);
     RegisterItem find(Customer customer, Share share);
-
+    long getShareTotalBalance(Share share);
 }
