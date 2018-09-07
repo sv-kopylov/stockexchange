@@ -8,4 +8,5 @@ import ru.kopylov.stockexshange.model.Order;
 public interface OrderPool {
     Order pollMatching(Order order);
     void add(Order order);
+    long size();
 }

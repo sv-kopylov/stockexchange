@@ -4,9 +4,8 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import ru.kopylov.stockexshange.DAO.OrderDAO;
-import ru.kopylov.stockexshange.DAO.Register;
 import ru.kopylov.stockexshange.ioc.Context;
-import ru.kopylov.stockexshange.load.DataLoader;
+import ru.kopylov.stockexshange.load.ApplicationDataLoader;
 import ru.kopylov.stockexshange.model.Customer;
 import ru.kopylov.stockexshange.model.Order;
 import ru.kopylov.stockexshange.model.Share;
@@ -34,8 +33,8 @@ public class OrderPoolImplTest {
 
     @Test
     public void add() throws Exception {
-        DataLoader dataLoader = new DataLoader(clientFileName, ordersFileName);
-        dataLoader.load();
+        ApplicationDataLoader applicationDataLoader = new ApplicationDataLoader(clientFileName, ordersFileName);
+        applicationDataLoader.load();
         orderDAO = (OrderDAO) Context.getInstance().lookup(OrderDAO.class);
         OrderPool orderPool = new OrderPoolImpl();
         Order order;

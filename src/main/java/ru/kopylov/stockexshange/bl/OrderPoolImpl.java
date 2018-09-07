@@ -10,6 +10,7 @@ import java.util.*;
  */
 public class OrderPoolImpl implements OrderPool {
     private final Map<Share, Map<Long, Map<Long, LinkedList<Order>>>> pool = new HashMap<>();
+    private long cnt;
 
     @Override
     public void add(Order order) {
@@ -41,8 +42,8 @@ public class OrderPoolImpl implements OrderPool {
         } else {
             sameOrdersList.addLast(order);
         }
+        cnt++;
     }
-
 
     @Override
     public Order pollMatching(Order order) {
@@ -60,6 +61,7 @@ public class OrderPoolImpl implements OrderPool {
             return null;
         }
         cleanEmpty(order, sameOrdersList, numMap, priceMap);
+        cnt--;
         return matchingOrder;
     }
 
@@ -78,5 +80,8 @@ public class OrderPoolImpl implements OrderPool {
         }
     }
 
-
+    @Override
+    public long size() {
+        return cnt;
+    }
 }

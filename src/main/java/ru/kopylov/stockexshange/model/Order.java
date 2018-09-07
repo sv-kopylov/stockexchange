@@ -10,6 +10,8 @@ public class Order {
     private final long pricePerShare;
     private final long sharesNum;
 
+    private boolean executed = false;
+
     public Order(Customer customer, Share share, Type type, long pricePerShare, long sharesNum) {
         this.customer = customer;
         this.share = share;
@@ -36,6 +38,18 @@ public class Order {
 
     public long getSharesNum() {
         return sharesNum;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public boolean isExecuted() {
+        return executed;
+    }
+
+    public void setExecuted() {
+        executed = true;
     }
 
     @Override

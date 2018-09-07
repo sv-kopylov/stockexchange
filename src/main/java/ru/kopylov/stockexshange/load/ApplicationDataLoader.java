@@ -9,13 +9,13 @@ import ru.kopylov.stockexshange.ioc.Context;
 /**
  *
  */
-public class DataLoader {
+public class ApplicationDataLoader {
 
     private final String clientsFileName;
     private final String ordersFileName;
     private final Context ctx = Context.getInstance();
 
-    public DataLoader(String clientsFileName, String ordersFileName) {
+    public ApplicationDataLoader(String clientsFileName, String ordersFileName) {
         this.clientsFileName = clientsFileName;
         this.ordersFileName = ordersFileName;
     }

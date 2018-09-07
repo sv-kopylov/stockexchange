@@ -28,10 +28,6 @@ public class ParserTest {
 
     }
 
-    @Test
-    public void init() throws Exception {
-
-    }
 
     @Test
     public void parseClients() throws Exception {
