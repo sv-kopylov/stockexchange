@@ -42,7 +42,7 @@ public class OrdersParser implements Parser {
         try {
             Files.lines(Paths.get(path)).forEach(this::parseOneOrder);
         } catch (IOException e) {
-            logger.error("Application fall doun because of problem with file: "+path);
+            logger.error("Application fall down because of problem with file: "+path);
             throw new CriticalException(e.getMessage());
         }
 
@@ -73,8 +73,8 @@ public class OrdersParser implements Parser {
             return;
         }
 
-        long pricePerShare = -1;
-        long sharesNum = -1;
+        long pricePerShare;
+        long sharesNum;
         try{
             pricePerShare = Long.parseLong(arr[3]);
             sharesNum = Long.parseLong(arr[4]);

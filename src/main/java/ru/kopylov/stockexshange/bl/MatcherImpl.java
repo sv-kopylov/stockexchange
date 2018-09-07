@@ -10,11 +10,11 @@ import ru.kopylov.stockexshange.model.Order;
  * Created by se on 07.09.2018.
  */
 public class MatcherImpl implements Matcher {
-    private OrderPool saleOrderPool = new OrderPoolImpl();
-    private OrderPool buyOrderPool = new OrderPoolImpl();
+    private final OrderPool saleOrderPool = new OrderPoolImpl();
+    private final OrderPool buyOrderPool = new OrderPoolImpl();
     
-    OrderDAO orderDAO;
-    OrderExecutor orderExecutor;
+    private OrderDAO orderDAO;
+    private OrderExecutor orderExecutor;
     public void init(){
         Context ctx = Context.getInstance();
         try {

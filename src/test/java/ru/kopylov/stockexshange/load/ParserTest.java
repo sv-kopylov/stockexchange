@@ -31,7 +31,7 @@ public class ParserTest {
 
     @Test
     public void parseClients() throws Exception {
-        Parser parser = new CustomesrParser();
+        Parser parser = new CustomersParser();
         parser.init();
         parser.parse(clientFileName);
         assertEquals(9,((CustomerDAO)ctx.lookup(CustomerDAO.class)).count());
@@ -40,7 +40,7 @@ public class ParserTest {
 
     @Test
     public void parseOrders() throws Exception {
-        Parser parser = new CustomesrParser();
+        Parser parser = new CustomersParser();
         parser.init();
         parser.parse(clientFileName);
         parser = new OrdersParser();

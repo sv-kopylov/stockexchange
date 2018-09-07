@@ -18,7 +18,7 @@ import java.nio.file.Paths;
  *
  */
 public class Saver {
-    private String filename;
+    private final String filename;
     private CustomerDAO customerDAO;
     private Register register;
     private static final Logger logger = Logger.getLogger(Saver.class);

@@ -14,7 +14,7 @@ import ru.kopylov.stockexshange.model.Share;
  * Created by se on 06.09.2018.
  */
 public class OrderExecutorImpl implements OrderExecutor {
-    Register register;
+    private Register register;
 
    public void init()  {
        try {
@@ -25,7 +25,7 @@ public class OrderExecutorImpl implements OrderExecutor {
    }
 
     @Override
-//    could be wraped in transaction
+//    could be wrapped in transaction
     public void execute(Order o1, Order o2) {
         if(o1==null
                 ||o2==null

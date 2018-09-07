@@ -38,7 +38,7 @@ public class ApplicationDataLoader {
     }
 
     private void fillTables(){
-        Parser parser = new CustomesrParser();
+        Parser parser = new CustomersParser();
         parser.init();
         parser.parse(clientsFileName);
         parser = new OrdersParser();

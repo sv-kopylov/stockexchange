@@ -26,10 +26,6 @@ public class OrderPoolImplTest {
     private Customer c1 = new Customer("C1", 1000);
 
 
-    @Before
-    public void setUp() throws Exception {
-
-    }
 
     @Test
     public void add() throws Exception {
@@ -38,7 +34,7 @@ public class OrderPoolImplTest {
         orderDAO = (OrderDAO) Context.getInstance().lookup(OrderDAO.class);
         OrderPool orderPool = new OrderPoolImpl();
         Order order;
-        long intialSize = orderDAO.count();
+        long initialSize = orderDAO.count();
         long cnt = 0;
         long start = System.currentTimeMillis();
         while ((order = orderDAO.poll()) != null) {
@@ -48,7 +44,7 @@ public class OrderPoolImplTest {
 
         logger.debug("added: " + cnt + " orders");
         logger.debug("adding time, mils: " + (System.currentTimeMillis() - start));
-        assertEquals(intialSize, cnt);
+        assertEquals(initialSize, cnt);
 
     }
 

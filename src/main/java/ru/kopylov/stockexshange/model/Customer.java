@@ -7,9 +7,6 @@ public class Customer {
     private String name;
     private long cashBalance;
 
-    public Customer() {
-    }
-
     public Customer(String name, long cashBalance) {
         this.name = name;
         this.cashBalance = cashBalance;
@@ -38,13 +35,11 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        if (cashBalance != customer.cashBalance) return false;
         return name != null ? name.equals(customer.name) : customer.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        return result;
+        return name != null ? name.hashCode() : 0;
     }
 }

@@ -20,11 +20,11 @@ import java.nio.file.Paths;
 /**
  * Created by se on 04.09.2018.
  */
-public class CustomesrParser implements Parser {
+public class CustomersParser implements Parser {
     private CustomerDAO customerDAO;
     private Register register;
     private ShareDAO shareDAO;
-    private static final Logger logger = Logger.getLogger(CustomesrParser.class);
+    private static final Logger logger = Logger.getLogger(CustomersParser.class);
 
     @Override
     public void init() {
@@ -42,7 +42,7 @@ public class CustomesrParser implements Parser {
         try {
             Files.lines(Paths.get(path)).forEach(this::parseOneCustomer);
         } catch (IOException e) {
-            logger.error("Application fall doun because of problem with file: "+path);
+            logger.error("Application fall down because of problem with file: "+path);
             throw new CriticalException(e.getMessage());
         }
     }
@@ -82,16 +82,16 @@ public class CustomesrParser implements Parser {
     private RegisterItem makeRegisterItem(Customer customer, int colIndex, String num) throws NotCriticalException {
         colIndex-=1;
         Share share = shareDAO.get(colIndex);
-        long itemBalance = -1;
+        long itemBalance;
         if(share==null){
             throw new NotCriticalException("No share found under index: "+colIndex+
-                    "Item will not be added to regisrter");
+                    "Item will not be added to register");
         }
         try{
             itemBalance = Long.parseLong(num);
         }catch (NumberFormatException e){
             throw new NotCriticalException("Customer field contains incorrect cash share num: "+e.getMessage()+
-                    "Item will not be added to regisrter");
+                    "Item will not be added to register");
         }
         return new RegisterItem(customer, share, itemBalance);
     }
