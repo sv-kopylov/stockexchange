@@ -6,6 +6,7 @@ import org.junit.Test;
 import ru.kopylov.stockexshange.DAO.*;
 import ru.kopylov.stockexshange.ioc.Context;
 import ru.kopylov.stockexshange.load.ApplicationDataLoader;
+import ru.kopylov.stockexshange.load.Saver;
 
 import static org.junit.Assert.*;
 
@@ -16,6 +17,7 @@ public class MatcherImplTest {
     private static Logger logger = Logger.getLogger(OrderPoolImplTest.class);
     private String clientFileName = "src\\test\\clients.txt";
     private String ordersFileName = "src\\test\\orders.txt";
+    private String resultFileName = "src\\test\\result.txt";
     private OrderDAO orderDAO;
     private Register register;
     private CustomerDAO customerDAO;
@@ -59,6 +61,10 @@ public class MatcherImplTest {
         assertEquals(bBalance, register.getShareTotalBalance(shareDAO.get(2)));
         assertEquals(cBalance, register.getShareTotalBalance(shareDAO.get(3)));
         assertEquals(dBalance, register.getShareTotalBalance(shareDAO.get(4)));
+
+        Saver saver = new Saver(resultFileName);
+        saver.init();
+        saver.save();
 
     }
 

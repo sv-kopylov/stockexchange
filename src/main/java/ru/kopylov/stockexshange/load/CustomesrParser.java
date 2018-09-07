@@ -2,6 +2,7 @@ package ru.kopylov.stockexshange.load;
 
 import org.apache.log4j.Logger;
 import ru.kopylov.stockexshange.DAO.CustomerDAO;
+import ru.kopylov.stockexshange.DAO.Register;
 import ru.kopylov.stockexshange.DAO.RegisterImpl;
 import ru.kopylov.stockexshange.DAO.ShareDAO;
 import ru.kopylov.stockexshange.Exceptions.CriticalException;
@@ -21,7 +22,7 @@ import java.nio.file.Paths;
  */
 public class CustomesrParser implements Parser {
     private CustomerDAO customerDAO;
-    private RegisterImpl register;
+    private Register register;
     private ShareDAO shareDAO;
     private static final Logger logger = Logger.getLogger(CustomesrParser.class);
 

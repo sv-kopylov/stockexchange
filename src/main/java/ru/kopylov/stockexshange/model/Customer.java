@@ -31,5 +31,20 @@ public class Customer {
         this.cashBalance = cashBalance;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer)) return false;
 
+        Customer customer = (Customer) o;
+
+        if (cashBalance != customer.cashBalance) return false;
+        return name != null ? name.equals(customer.name) : customer.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        return result;
+    }
 }

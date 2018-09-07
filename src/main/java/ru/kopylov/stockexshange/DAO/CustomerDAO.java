@@ -31,6 +31,10 @@ public class CustomerDAO {
     public long count(){
         return list.size();
     }
+    public List<Customer> selectAll(){
+        return list;
+    }
+
 
 
 }

@@ -5,6 +5,7 @@ import ru.kopylov.stockexshange.model.RegisterItem;
 import ru.kopylov.stockexshange.model.Share;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Not very memory-friendly implementation, but
@@ -29,6 +30,12 @@ public class  RegisterImpl implements Register {
         key.setCustomer(customer);
         key.setShare(share);
         return map.get(key);
+    }
+
+    @Override
+    public List<RegisterItem> find(Customer customer) {
+        return map.values().stream().filter(ri->ri.getCustomer().equals(customer)).collect(Collectors.toList());
+
     }
 
     @Override
