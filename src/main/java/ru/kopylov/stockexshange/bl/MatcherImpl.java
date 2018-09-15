@@ -10,8 +10,8 @@ import ru.kopylov.stockexshange.model.Order;
  * Created by se on 07.09.2018.
  */
 public class MatcherImpl implements Matcher {
-    private final OrderPool saleOrderPool = new OrderPoolImpl();
-    private final OrderPool buyOrderPool = new OrderPoolImpl();
+    private final OrderPool saleOrderPool = new SuperMemoryFriendlyOrderPool();
+    private final OrderPool buyOrderPool = new SuperMemoryFriendlyOrderPool();
     
     private OrderDAO orderDAO;
     private OrderExecutor orderExecutor;
